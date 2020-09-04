@@ -54,7 +54,7 @@
           {
             "type": "docker-tag",
             "repository": "demo",
-            "tag": "packer"
+            "tag": "packer.demo.build"
           }
         ]
       ]

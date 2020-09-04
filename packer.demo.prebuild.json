@@ -29,7 +29,7 @@
           {
             "type": "docker-tag",
             "repository": "demo",
-            "tag": "packer.prebuild"
+            "tag": "packer.demo.prebuild"
           }
         ]
       ]
