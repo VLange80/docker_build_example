@@ -7,6 +7,7 @@ Here are the resuling size:
 | Method | Resulted Size | Added to Base |
 | --- | --- | --- |
 | base image | 627MB | - |
+| size of jar | 17MB |
 | dockerfile.single | 736MB | 109MB |
 | packer | 718MB | 91MB |
 | dockerfile.multi | 645MB | 18MB |
