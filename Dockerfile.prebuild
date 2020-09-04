@@ -1,0 +1,9 @@
+FROM openjdk:11.0.8-jdk
+
+RUN mkdir -p /app
+COPY demo/target/restservice-0.0.1-SNAPSHOT.jar /app/restservice-0.0.1-SNAPSHOT.jar
+
+WORKDIR /app
+VOLUME /tmp
+
+ENTRYPOINT ["java","-jar", "/app/restservice-0.0.1-SNAPSHOT.jar"]

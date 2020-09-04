@@ -1,0 +1,36 @@
+{
+    "builders":[
+        {
+            "type": "docker",
+            "image": "openjdk:11.0.8-jdk",
+            "commit": true,
+            "changes": [
+                "VOLUME /tmp",
+                "ENTRYPOINT [\"java\",\"-jar\", \"/app/restservice-0.0.1-SNAPSHOT.jar\"]"
+            ]
+        }
+    ],
+    "provisioners":[
+        {
+            "type": "shell",
+            "inline": [
+                "mkdir -p /app"
+            ]
+
+        },
+        {
+            "type": "file",
+            "source": "demo/target/restservice-0.0.1-SNAPSHOT.jar",
+            "destination": "/app/restservice-0.0.1-SNAPSHOT.jar"
+        }
+    ],
+    "post-processors": [
+        [
+          {
+            "type": "docker-tag",
+            "repository": "demo",
+            "tag": "packer.prebuild"
+          }
+        ]
+      ]
+}

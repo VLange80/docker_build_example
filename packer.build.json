@@ -1,0 +1,61 @@
+{
+    "builders":[
+        {
+            "type": "docker",
+            "image": "openjdk:11.0.8-jdk",
+            "commit": true,
+            "changes": [
+                "VOLUME /tmp",
+                "ENTRYPOINT [\"java\",\"-jar\", \"/app/restservice-0.0.1-SNAPSHOT.jar\"]"
+            ]
+        }
+    ],
+    "provisioners":[
+        {
+            "type": "shell",
+            "inline": [
+                "mkdir -p /workspace/app"
+            ]
+        },
+        {
+            "type": "file",
+            "source": "demo/mvnw",
+            "destination": "/workspace/app/mvnw"
+        },
+        {
+            "type": "file",
+            "source": "demo/.mvn",
+            "destination": "/workspace/app/.mvn"
+        },
+        {
+            "type": "file",
+            "source": "demo/pom.xml",
+            "destination": "/workspace/app/pom.xml"
+        },
+        {
+            "type": "file",
+            "source": "demo/src",
+            "destination": "/workspace/app/src"
+        },
+        {
+            "type": "shell",
+            "inline": [
+                "cd /workspace/app/",
+                "./mvnw package verify",
+                "mkdir -p /app",
+                "cp -r target/restservice-0.0.1-SNAPSHOT.jar /app/restservice-0.0.1-SNAPSHOT.jar",
+                "rm -rf /workspace/app"
+            ]
+
+        }
+    ],
+    "post-processors": [
+        [
+          {
+            "type": "docker-tag",
+            "repository": "demo",
+            "tag": "packer"
+          }
+        ]
+      ]
+}

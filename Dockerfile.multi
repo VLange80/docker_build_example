@@ -1,0 +1,15 @@
+FROM openjdk:11.0.8-jdk as build
+WORKDIR /workspace/app
+
+COPY demo/mvnw .
+COPY demo/.mvn .mvn
+COPY demo/pom.xml .
+COPY demo/src src
+
+RUN ./mvnw package verify
+
+FROM openjdk:11.0.8-jdk
+VOLUME /tmp
+ARG DEPENDENCY=/workspace/app/target
+COPY --from=build ${DEPENDENCY}/restservice-0.0.1-SNAPSHOT.jar /app/restservice-0.0.1-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar", "/app/restservice-0.0.1-SNAPSHOT.jar"]

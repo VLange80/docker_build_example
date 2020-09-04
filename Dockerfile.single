@@ -1,0 +1,17 @@
+FROM openjdk:11.0.8-jdk
+WORKDIR /workspace/app
+
+COPY demo/mvnw .
+COPY demo/.mvn .mvn
+COPY demo/pom.xml .
+COPY demo/src src
+
+RUN ./mvnw package verify
+RUN mkdir -p /app
+RUN cp -r target/restservice-0.0.1-SNAPSHOT.jar /app/restservice-0.0.1-SNAPSHOT.jar 
+RUN rm -rf /workspace/app
+
+WORKDIR /app
+VOLUME /tmp
+
+ENTRYPOINT ["java","-jar", "/app/restservice-0.0.1-SNAPSHOT.jar"]
