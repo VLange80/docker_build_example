@@ -78,4 +78,17 @@ Looking at the results, It seems that even if you have a line in your Cotainer D
 
 Next up I will perform this with a Python/Flask application since it requires libraries as well in the image.
   
+| Method | Resulted Size | Added to Base | Time to Build |
+| --- | --- | --- | --- |
+| python:3.8.5 | 882MB | - | - |
+| ubuntu:20.04 | 73.9MB | - |  - |
+| dockerfile.ubuntu | 393MB | 319.1MB | 44.786s |
+| dockerfile.python | 892MB | 10MB | 4.883s |
+| packer.ubuntu | 393MB | 319.1MB | 207.921 |
+| packer.python | 892MB | 10MB | 7.921s |
+
+This one is pretty obvious the more complete the base image is, the less time it takes to build the final image. In this case using a larger base image that already has the base libraries and application installed for Python and Pip enables us to build a Docker image with our app running faster. However the Resulting Image can be much larger that if we took the time to build it ourselves. there are tradeoffs.
+
+Overall it is clear that building with Native Dockerfiles is faster than packer, but compiled languages see a reduced overall build time by building them prior to installing the artifacts into the Docker image.
+
 [Back to Blog](https://madmages.com)

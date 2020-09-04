@@ -1,0 +1,50 @@
+{
+    "builders":[
+        {
+            "type": "docker",
+            "image": "python:3.8.5",
+            "commit": true,
+            "changes": [
+                "VOLUME /tmp",
+                "ENTRYPOINT [\"python\"]",
+                "CMD [ \"app.py\" ]"
+            ]
+        }
+    ],
+    "provisioners":[
+        {
+            "type": "shell",
+            "inline": [
+                "mkdir -p /usr/src/app"
+            ]
+
+        },
+        {
+            "type": "file",
+            "source": "./requirements.txt",
+            "destination": "/usr/src/app/requirements.txt"
+        },
+        {
+            "type": "shell",
+            "inline": [
+                "cd /usr/src/app/",
+                "pip install --no-cache-dir -r requirements.txt"
+            ]
+
+        },
+        {
+            "type": "file",
+            "source": "./app.py",
+            "destination": "/usr/src/app/app.py"
+        }
+    ],
+    "post-processors": [
+        [
+          {
+            "type": "docker-tag",
+            "repository": "flask_demo",
+            "tag": "packer.python"
+          }
+        ]
+      ]
+}
