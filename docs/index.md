@@ -4,15 +4,14 @@ I decided to see what the resulting image size for several methods of building t
 
 Here are the resuling size:
 
-| Method | Resulted Size | Added to Base |
-| --- | --- | --- |
-| base image | 627MB | - |
-| size of jar | 17MB |
-| dockerfile.single | 736MB | 109MB |
-| packer | 718MB | 91MB |
-| dockerfile.multi | 645MB | 18MB |
-| dockerfile.prebuild | 645MB | 18MB |
-| packer.prebuild | 645MB | 18MB |
+| Method | Resulted Size | Added to Base | - Size of Jar | = Total Layer added |
+| --- | --- | --- | --- | --- |
+| base image | 627MB | - | - | - |
+| dockerfile.single | 736MB | 109MB | 17MB | 102MB |
+| packer | 718MB | 91MB | 17MB | 74MB |
+| dockerfile.multi | 645MB | 18MB | 17MB | 1MB |
+| dockerfile.prebuild | 645MB | 18MB | 17MB | 1MB |
+| packer.prebuild | 645MB | 18MB | 17MB | 1MB |
 
 The layers for each:
 
@@ -65,6 +64,8 @@ packer.prebuild:
 | --- | --- | --- |
 | 0a2b05de8e04 |  | 17.7MB |
 
-Looking at the results, It seems that even if you have a line in your Cotainer Definition file, be it Dockerfile or packer, there is still a leftover layer that increases the overall size of your image.  
+Looking at the results, It seems that even if you have a line in your Cotainer Definition file, be it Dockerfile or packer, there is still a leftover layer that increases the overall size of your image. This leftover layer contains all the data and instructions that occured in it that is part of the ```docker history``` protocol and allows you to roll back to a previous setp in the Docker setup.  
+
+Next up I will perform this with a Python/Flask application since it requires libraries as well in the image.
   
 [Back to Blog](https://madmages.com)
