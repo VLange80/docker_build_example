@@ -3,8 +3,9 @@
 I decided to see what the resulting image size for several methods of building the same image (in this case a demo java app) were.  
 
 Here are the resuling size:
+
 | Method | Resulted Size | Added to Base |
-| --- | --- | -- |
+| --- | --- | --- |
 | base image | 627MB | - |
 | dockerfile.single | 736MB | 109MB |
 | packer | 718MB | 91MB |
@@ -17,7 +18,7 @@ The layers for each:
 dockerfile.single:
 
 | Layer | Command | SIZE |
-| --- | --- | -- |
+| --- | --- | --- |
 | f059b56620bc |  ENTRYPOINT ["java" "-jar"…  | 0B |
 | e41a83f92361 |  VOLUME [/tmp] | 0B |
 | 2aa068673e6b | WORKDIR /app | 0B |
@@ -34,12 +35,12 @@ dockerfile.single:
 packer:
 
 | Layer | Command | SIZE |
-| --- | --- | -- |
+| --- | --- | --- |
 | 8a6cffefd553 | | 90.5MB |
 
 dockerfile.multi:  
 | Layer | Command | SIZE |
-| --- | --- | -- |
+| --- | --- | --- |
 | 9e704c46e232 | ENTRYPOINT ["java" "-jar"… | 0B |
 | df0194c67082 | COPY file:67d1c9b0af867f35… | 17.7MB |
 | 33b90871b563 | ARG DEPENDENCY=/workspace… | 0B |
@@ -47,7 +48,7 @@ dockerfile.multi:
 
 dockerfile.prebuild:  
 | Layer | Command | SIZE |
-| --- | --- | -- |
+| --- | --- | --- |
 | 758c98cdb525 | ENTRYPOINT ["java" "-jar"… | 0B |
 | 41e9939f68fe | VOLUME [/tmp] | 0B |
 | ee9879c307d3 | WORKDIR /app | 0B |
@@ -57,7 +58,7 @@ dockerfile.prebuild:
 
 packer.prebuild:  
 | Layer | Command | SIZE |
-| --- | --- | -- |
+| --- | --- | --- |
 | 0a2b05de8e04 |  | 17.7MB |
 
 Looking at the results, It seems that even if you have a line in your Cotainer Definition file, be it Dockerfile or packer, there is still a leftover layer that increases the overall size of your image.  
