@@ -9,6 +9,6 @@ Packer: [Installing Packer](https://learn.hashicorp.com/tutorials/packer/getting
 #### Running the test:
 I have provided a bash script designed to take care of building all 4 images and outputting the details of size with the ```docker image``` command.
 ```bash
-$: chmod 700 build.sh
-$: ./build.sh  
+$: chmod 700 demo.build.sh
+$: ./demo.build.sh  
 ```  

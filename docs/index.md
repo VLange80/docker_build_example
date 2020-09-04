@@ -1,21 +1,21 @@
 # A test of building the same app into containers 4 ways  
 
-I decided to see what the resulting image size for several methods of building the same image (in this case a demo java app) were.  
+I decided to see what the resulting image size for several methods of building the same java image (in this case a demo java app) were.  
 
 Here are the resuling size:
 
 | Method | Resulted Size | Added to Base | - Size of Jar | = Total Layer added |
 | --- | --- | --- | --- | --- |
 | base image | 627MB | - | - | - |
-| dockerfile.single | 736MB | 109MB | 17MB | 102MB |
-| packer | 718MB | 91MB | 17MB | 74MB |
-| dockerfile.multi | 645MB | 18MB | 17MB | 1MB |
-| dockerfile.prebuild | 645MB | 18MB | 17MB | 1MB |
-| packer.prebuild | 645MB | 18MB | 17MB | 1MB |
+| dockerfile.demo.single | 736MB | 109MB | 17MB | 102MB |
+| packer.demo.build | 718MB | 91MB | 17MB | 74MB |
+| dockerfile.demo.multi | 645MB | 18MB | 17MB | 1MB |
+| dockerfile.demo.prebuild | 645MB | 18MB | 17MB | 1MB |
+| packer.demo.prebuild | 645MB | 18MB | 17MB | 1MB |
 
 The layers for each:
 
-dockerfile.single:
+dockerfile.demo.single:
 
 | Layer | Command | SIZE |
 | --- | --- | --- |
@@ -32,13 +32,13 @@ dockerfile.single:
 | 05d4425ffb07 | COPY file:61803a078a81d61d… | 10.1kB |
 | ec03949916a6 | WORKDIR /workspace/app | 0B |
 
-packer:
+packer.demo.build:
 
 | Layer | Command | SIZE |
 | --- | --- | --- |
 | 8a6cffefd553 | | 90.5MB |
 
-dockerfile.multi:  
+dockerfile.demo.multi:  
 
 | Layer | Command | SIZE |
 | --- | --- | --- |
@@ -47,7 +47,7 @@ dockerfile.multi:
 | 33b90871b563 | ARG DEPENDENCY=/workspace… | 0B |
 | 812251c5bc83 | VOLUME [/tmp] | 0B |
 
-dockerfile.prebuild:  
+dockerfile.demo.prebuild:  
 
 | Layer | Command | SIZE |
 | --- | --- | --- |
@@ -58,7 +58,7 @@ dockerfile.prebuild:
 | 5a7848f3921a | mkdir -p /app | 0B |
 
 
-packer.prebuild:  
+packer.demo.prebuild:  
 
 | Layer | Command | SIZE |
 | --- | --- | --- |
