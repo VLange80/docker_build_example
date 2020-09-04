@@ -1,1 +1,4 @@
 theme: jekyll-theme-minimal
+markdown: kramdown
+title: Jason Lang
+description: Advocate of SOA architecture, LEAN practices and the DevOps culture.

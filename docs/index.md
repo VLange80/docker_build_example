@@ -61,3 +61,5 @@ packer.prebuild:
 | 0a2b05de8e04 |  | 17.7MB |
 
 Looking at the results, It seems that even if you have a line in your Cotainer Definition file, be it Dockerfile or packer, there is still a leftover layer that increases the overall size of your image.  
+  
+[Back to Blog](https://madmages.com)
