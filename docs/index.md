@@ -39,6 +39,7 @@ packer:
 | 8a6cffefd553 | | 90.5MB |
 
 dockerfile.multi:  
+
 | Layer | Command | SIZE |
 | --- | --- | --- |
 | 9e704c46e232 | ENTRYPOINT ["java" "-jar"… | 0B |
@@ -47,6 +48,7 @@ dockerfile.multi:
 | 812251c5bc83 | VOLUME [/tmp] | 0B |
 
 dockerfile.prebuild:  
+
 | Layer | Command | SIZE |
 | --- | --- | --- |
 | 758c98cdb525 | ENTRYPOINT ["java" "-jar"… | 0B |
@@ -57,6 +59,7 @@ dockerfile.prebuild:
 
 
 packer.prebuild:  
+
 | Layer | Command | SIZE |
 | --- | --- | --- |
 | 0a2b05de8e04 |  | 17.7MB |
