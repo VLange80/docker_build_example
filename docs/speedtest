@@ -1,0 +1,7 @@
+packer.demo.build took: 54691 milliseconds
+dockerfile.demo.single took: 41692 milliseconds
+dockerfile.demo.multi took: 39781 milliseconds
+demo.maven.spotify took: 59813 milliseconds
+prebuild took: 5052 milliseconds
+dockerfile.demo.prebuild took: 1567 + 5052 = 6619 milliseconds
+packer.demo.prebuild took: 4894 + 5052 = 9946 milliseconds

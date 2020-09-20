@@ -7,12 +7,12 @@ Here are the resuling size:
 | Method | Resulted Size | Added to Base | - Size of Jar | = Total Layer added | Time to Build |
 | --- | --- | --- | --- | --- | --- |
 | base image | 627MB | - | - | - | - |
-| dockerfile.demo.single | 736MB | 109MB | 17MB | 102MB | 36.593s |
-| packer.demo.build | 718MB | 91MB | 17MB | 74MB | 38.382s |
-| dockerfile.demo.multi | 645MB | 18MB | 17MB | 1MB | 35.16s |
-| dockerfile.demo.prebuild | 645MB | 18MB | 17MB | 1MB | 6.55s |
-| packer.demo.prebuild | 645MB | 18MB | 17MB | 1MB | 9.472s |
-| demo.maven.spotify | 645MB | 18MB| 17MB | 1MB | 8.179s |
+| dockerfile.demo.single | 736MB | 109MB | 17MB | 102MB | 41.692s |
+| packer.demo.build | 718MB | 91MB | 17MB | 74MB | 54.691s |
+| dockerfile.demo.multi | 645MB | 18MB | 17MB | 1MB | 39.781s |
+| dockerfile.demo.prebuild | 645MB | 18MB | 17MB | 1MB | 6.619s |
+| packer.demo.prebuild | 645MB | 18MB | 17MB | 1MB | 9.946s |
+| demo.maven.spotify | 645MB | 18MB| 17MB | 1MB | 59.813s |
 
 The layers for each:
 
